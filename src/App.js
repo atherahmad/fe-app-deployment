@@ -37,6 +37,8 @@ function App() {
             <Route path='/' element={<Movies movies={movies} submitHandler={submitHandler}/>}/>
             <Route path='/movies' element={<Movies movies={movies} submitHandler={submitHandler}/>}/>
             <Route path='/about' element={<About />}/>
+            <Route path='/*' element={<Movies movies={movies} submitHandler={submitHandler}/>}/>
+
           </Routes>
         </Router>
       </header>
