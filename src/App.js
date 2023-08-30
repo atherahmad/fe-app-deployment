@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
+import About from './components/about';
+import Movies from './components/movies';
 
 function App() {
 
@@ -25,14 +28,17 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+
         <h2>Movies App</h2>
-        <form onSubmit={submitHandler}>
-          <input type="text" name='movieName' placeholder='Please enter the movie name'/>
-          <input type='submit' value="Add Movie" />
-        </form>
-        <br />
-        <h3>List of Stored Movies</h3>
-        {movies.map(item => <div>{item.movieName}</div>)}
+        <Router>
+        <Link to='/movies'>Movies</Link>
+        <Link to='/about'>About us</Link>
+          <Routes>
+            <Route path='/' element={<Movies movies={movies} submitHandler={submitHandler}/>}/>
+            <Route path='/movies' element={<Movies movies={movies} submitHandler={submitHandler}/>}/>
+            <Route path='/about' element={<About />}/>
+          </Routes>
+        </Router>
       </header>
     </div>
   );
